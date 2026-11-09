@@ -350,6 +350,12 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px}
 .ansbox.answered{padding:14px;border-radius:14px;background:var(--gold-wash)}
 .ansbox.answered p{font-family:var(--f-serif);font-style:italic;font-size:16px;margin:6px 0 12px}
 .lib h2{margin-top:4px}
+.libhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px}
+.libhead h2{font-family:var(--f-serif);font-size:24px;margin-top:2px}
+.libhead p{margin:4px 0 0}
+.libtext.pre{white-space:pre-line}
+.libverse{margin:-4px 0 14px;padding:10px 12px;border-radius:12px;background:var(--accent-wash);font-family:var(--f-serif);font-style:italic;font-size:15.5px;line-height:1.5}
+.libverse span{display:block;font-family:var(--f-ui);font-style:normal;font-size:12px;font-weight:700;color:var(--accent);margin-top:4px;letter-spacing:.02em}
 .lib .libtext{font-family:var(--f-serif);font-size:17px;line-height:1.55;margin:8px 0 14px}
 .chipscroll{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:12px calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;padding:0 max(16px,env(safe-area-inset-left,0px)) 2px}
 .chipscroll::-webkit-scrollbar{display:none}
@@ -447,7 +453,7 @@ const IOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform
 /* ---------- state ---------- */
 const LS_KEY = "mybible.v2", OLD_KEY = "mybible.bsb.v1";
 const blank = () => ({v:2,updated:0,onboarded:false,profile:{name:"",topics:[]},prefs:{size:19,lh:1.65,font:"serif",theme:"system",layout:"lines",rate:1},
-  last:{b:42,c:1},hl:{},bm:{},notes:{},read:{},days:{},plan:null,recent:[],installHidden:false,journal:{},prayers:{}});
+  last:{b:42,c:1},hl:{},bm:{},notes:{},read:{},days:{},plan:null,recent:[],installHidden:false,journal:{},prayers:{},seed:{}});
 function hydrate(o){ const d=blank(); if(!o||typeof o!=="object") return d;
   return {...d,...o,profile:{...d.profile,...(o.profile||{})},prefs:{...d.prefs,...(o.prefs||{})},last:{...d.last,...(o.last||{})},
     hl:o.hl||{},bm:o.bm||{},notes:o.notes||{},read:o.read||{},days:o.days||{},recent:Array.isArray(o.recent)?o.recent:[],journal:o.journal||{},prayers:o.prayers||{}}; }
@@ -493,7 +499,8 @@ const key = (b,c,v) => v==null ? b+"."+c : b+"."+c+"."+v;
 const parseKey = k => k.split(".").map(Number);
 let BIBLE = null, loadErr = "";
 const bname = b => BIBLE ? BIBLE[b][0] : "";
-const ref = (b,c,v) => bname(b)+" "+c+(v?":"+v:"");
+const bk = b => b===18 ? "Psalm" : bname(b);
+const ref = (b,c,v) => bk(b)+" "+c+(v?":"+v:"");
 const vtext = (b,c,v) => { try{ return BIBLE[b][1][c-1][v-1]||""; }catch(e){ return ""; } };
 const nch = b => BIBLE[b][1].length;
 const nltUrl = (b,c,v) => "https://www.biblegateway.com/passage/?version=NLT&search=" + encodeURIComponent(ref(b,c,v));
@@ -785,9 +792,20 @@ function drawRefRow(){ const r=sheetEl&&sheetEl.querySelector("#jn-refrow"); if(
 const delBtn=(kind,id)=>`<button class="btn sm warn" data-act="askdel" data-kind="${kind}" data-id="${id}">${I.trash}Delete ${kind==="journal"?"note":"prayer"}</button>`;
 
 /* ---------- Prayers ---------- */
-const CATS=["Personal","Family","Friends","Health","Work","Church","World","Thanks"];
+const CATS=["Personal","Family","Friends","Health","Work","Provision","Church","World","Thanks"];
 const LIB=[["The Lord's Prayer",39,6,9,13,"Personal"],["The Lord is my shepherd",18,23,1,6,"Personal"],["A blessing over someone",3,6,24,26,"Family"],["Create in me a clean heart",18,51,10,12,"Personal"],["Search me, O God",18,139,23,24,"Personal"],["When you are anxious",49,4,6,7,"Personal"],["For wisdom",58,1,5,5,"Work"],["Trust in the Lord",19,3,5,6,"Personal"],["For strength and love",48,3,16,19,"Family"],["A morning prayer",18,5,3,3,"Personal"],["An evening prayer",18,4,8,8,"Personal"],["Thanksgiving",18,100,1,5,"Thanks"]];
-const libRef=x=>`${bname(x[1])} ${x[2]}:${x[3]}${x[4]>x[3]?"–"+x[4]:""}`;
+const PACK=[{"t": "Pray for divine help", "lbl": "Psalm 121", "r": [18, 121, 1, 2], "b": "My help comes from You, Lord.\nSend me the kind of help that changes my situation without destroying my peace.\nConnect me with people who genuinely want to see me progress. Send clients, customers, mentors, partners, employers, investors, and helpers who are right for the assignment You have given me.\nLet me not miss the people You are sending because I am distracted by the wrong connections."}, {"t": "Pray for the business opportunity you have not seen yet", "lbl": "", "r": null, "b": "Father, there may be an opportunity around me that I have not recognized.\nOpen my eyes.\nGive me understanding.\nShow me what I am overlooking.\nGive me an idea that solves a real problem and can become a source of income.\nGive me the courage to start and the wisdom to build it properly."}, {"t": "Pray over the work of your hands", "lbl": "Psalm 90:17", "r": [18, 90, 17, 17], "b": "Lord, establish the work of my hands.\nGive me something that can grow, not something that will constantly drain me.\nGive me wisdom to recognize what is profitable, discipline to manage what You give me, and grace to build something sustainable.\nLet my efforts begin producing results I can actually see."}, {"t": "Pray for fruitfulness", "lbl": "Psalm 1", "r": [18, 1, 3, 3], "b": "Lord, make me fruitful in what I put my hands to. Give me ideas that solve real problems. Give me wisdom to turn opportunities into results.\nTeach me how to build, how to sell, how to save, how to reinvest, and how to recognize what is worth pursuing.\nLet my financial life move from merely surviving to becoming established."}, {"t": "Pray for divine favour", "lbl": "Psalm 5:12", "r": [18, 5, 12, 12], "b": "Father, let Your favour go ahead of me.\nCause me to be noticed for the right reasons and remembered in the right places.\nLet opportunities I could never create for myself locate me. Put my name in conversations that can change my financial situation. Where people need what I carry, let them find me.\nLet favour speak for me where my efforts alone cannot."}, {"t": "Pray for God to order your steps", "lbl": "Psalm 37:5", "r": [18, 37, 5, 5], "b": "Father, I surrender my financial plans to You.\nIf I am pursuing something that is not for me, give me the courage to let it go.\nIf there is something I should be pursuing but cannot yet see, reveal it to me.\nOrder my steps toward the opportunities that align with Your purpose for my life."}, {"t": "Pray for provision & right opportunities", "lbl": "Psalm 23", "r": [18, 23, 1, 1], "b": "Lord, be my Shepherd in this season.\nLead me toward opportunities that are genuinely good for me.\nKeep me from wasting time, money, and energy on things that look promising but will only bring loss. Lead me to the right business, the right idea, the right clients, the right market, and the right decisions.\nLet me not chase what You never assigned to me."}, {"t": "Pray for financial stability", "lbl": "Psalm 112", "r": [18, 112, 7, 7], "b": "Father, I don't want money just to spend it and return to the same place.\nGive me stability.\nGive me wisdom to manage money well.\nBreak the cycle of receiving and immediately losing everything. Teach me discipline, stewardship and patience.\nLet what enters my hands have purpose, direction and lasting impact."}, {"t": "Pray for divine connections", "lbl": "", "r": null, "b": "Lord, connect me to people I could never have connected myself to.\nLet the right person hear about me.\nLet the right person recommend me.\nLet the right person call me.\nLet the right customer find me.\nLet the right opportunity cross my path.\nAnd give me discernment so I don't mistake every connection for a divine connection."}];
+const packKey=i=>"prov:"+i;
+const verseOf=r=>{ const o=[]; for(let v=r[2];v<=r[3];v++) o.push(vtext(r[0],r[1],v)); return o.join(" "); };
+const verseRef=r=>`${bk(r[0])} ${r[1]}:${r[2]}${r[3]>r[2]?"–"+r[3]:""}`;
+const packBody=x=>x.b+(x.r?`\n\n“${verseOf(x.r)}”\n— ${verseRef(x.r)}`:"");
+const packFind=i=>Object.values(S.prayers).find(p=>p.src===packKey(i));
+const packPrayer=(i,created)=>({id:uid(),src:packKey(i),title:PACK[i].t,body:packBody(PACK[i]),cat:"Provision",created,updated:created,days:{},count:0,answered:null});
+const packItem=i=>{ const p=packFind(i); return {id:p&&p.id,title:PACK[i].t,body:packBody(PACK[i]),cat:"Provision"}; };
+function seedPack(){ if(S.seed&&S.seed.prov1) return 0; const base=Date.now(); let n=0;
+  PACK.forEach((x,i)=>{ if(!packFind(i)){ const p=packPrayer(i,base-i); S.prayers[p.id]=p; n++; } });
+  S.seed=Object.assign({},S.seed,{prov1:1}); commit(); return n; }
+const libRef=x=>`${bk(x[1])} ${x[2]}:${x[3]}${x[4]>x[3]?"–"+x[4]:""}`;
 const libText=x=>{ const o=[]; for(let v=x[3];v<=x[4];v++) o.push(vtext(x[1],x[2],v)); return o.join(" "); };
 let prayTab="active", prayCat="All", edCat="Personal";
 const prayedToday=p=>!!(p.days&&p.days[today()]);
@@ -803,7 +821,7 @@ function renderPray(){
   const done=active.filter(prayedToday).length;
   let h=`<div class="lt titlerow"><h1 class="big">Prayers</h1><button class="btn sm pri" data-act="newprayer">${I.plus}New prayer</button></div><div class="stack">`;
   if(active.length) h+=`<article class="praycard" style="background-image:${STARS},linear-gradient(150deg,#4A2A6E,#1C1F4A)"><div><div class="eyebrow">Today</div><div class="pc-num"><b>${done}</b> of ${active.length} prayed</div></div><button class="btn light" data-act="praynow">${I.play}Pray now</button></article>`;
-  h+=`<div class="seg">${[["active","Praying",active.length],["answered","Answered",answered.length],["library","Scripture",0]].map(([id,l,n])=>`<button data-act="praytab" data-t="${id}" aria-pressed="${prayTab===id}">${l}${n?`<span class="cnt">${n}</span>`:""}</button>`).join("")}</div>`;
+  h+=`<div class="seg">${[["active","Praying",active.length],["answered","Answered",answered.length],["library","Library",0]].map(([id,l,n])=>`<button data-act="praytab" data-t="${id}" aria-pressed="${prayTab===id}">${l}${n?`<span class="cnt">${n}</span>`:""}</button>`).join("")}</div>`;
   if(prayTab==="active"){
     const used=CATS.filter(c=>active.some(p=>p.cat===c)); if(!used.includes(prayCat)) prayCat="All";
     if(!active.length) h+=emptyState(I.pray,"Start your prayer list","Add the people and things you're praying for. Tick them off each day and keep a record of how God answers.",`<button class="btn pri" data-act="newprayer">${I.plus}Add a prayer</button>`);
@@ -813,7 +831,13 @@ function renderPray(){
     if(!answered.length) h+=emptyState(I.sparkle,"No answered prayers yet","When a prayer is answered, open it and tap Mark as answered. It stays here so you can remember.");
     else h+=`<div class="results" style="margin-top:0">`+answered.map(p=>`<button class="res ansitem" data-act="editprayer" data-id="${p.id}"><div class="pr-top"><span class="cat">${esc(p.cat)}</span><span class="small muted">Answered ${esc(fmtDay(p.answered.date))}</span></div><b class="pr-title">${esc(p.title)}</b>${p.answered.note?`<div class="pr-body ital">${esc(p.answered.note)}</div>`:""}</button>`).join("")+`</div>`;
   } else {
-    h+= BIBLE ? `<p class="small muted" style="margin:0 2px">Prayers from Scripture to pray as they are, or add to your list.</p><div class="results" style="margin-top:0">`+LIB.map((x,i)=>`<article class="card lib"><div class="eyebrow">${esc(libRef(x))}</div><h2>${esc(x[0])}</h2><p class="libtext">${fmt(libText(x))}</p><div class="row"><button class="btn sm pri" data-act="libpray" data-i="${i}">${I.play}Pray this</button><button class="btn sm" data-act="libadd" data-i="${i}">${I.plus}Add to my prayers</button></div></article>`).join("")+`</div>` : `<div class="empty">Loading…</div>`;
+    if(!BIBLE) h+=`<div class="empty">Loading…</div>`;
+    else {
+      h+=`<div class="libhead"><div><div class="eyebrow">Collection</div><h2>Provision &amp; purpose</h2><p class="small muted">${PACK.length} prayers for direction, work, favour and financial stability.</p></div><button class="btn sm pri" data-act="packpray">${I.play}Pray through all</button></div>
+        <div class="results" style="margin-top:0">`+PACK.map((x,i)=>{ const inl=packFind(i); return `<article class="card lib"><div class="eyebrow">${esc(x.lbl||"Prayer")}</div><h2>${esc(x.t)}</h2><p class="libtext pre">${esc(x.b)}</p>${x.r?`<p class="libverse">“${fmt(verseOf(x.r))}”<span>${esc(verseRef(x.r))}</span></p>`:""}<div class="row"><button class="btn sm pri" data-act="packone" data-i="${i}">${I.play}Pray this</button>${inl?`<button class="btn sm" data-act="editprayer" data-id="${inl.id}">${I.check}In your prayers</button>`:`<button class="btn sm" data-act="packadd" data-i="${i}">${I.plus}Add to my prayers</button>`}</div></article>`; }).join("")+`</div>`;
+      h+=`<div class="libhead"><div><div class="eyebrow">Collection</div><h2>From Scripture</h2><p class="small muted">Prayers from the Bible to pray as they are, or add to your list.</p></div></div>
+        <div class="results" style="margin-top:0">`+LIB.map((x,i)=>`<article class="card lib"><div class="eyebrow">${esc(libRef(x))}</div><h2>${esc(x[0])}</h2><p class="libtext">${fmt(libText(x))}</p><div class="row"><button class="btn sm pri" data-act="libpray" data-i="${i}">${I.play}Pray this</button><button class="btn sm" data-act="libadd" data-i="${i}">${I.plus}Add to my prayers</button></div></article>`).join("")+`</div>`;
+    }
   }
   h+=`</div>`;
   el.innerHTML=h;
@@ -1046,6 +1070,9 @@ document.addEventListener("click",e=>{
     case "pm-amen": { const it=pm.items[pm.i]; if(it.id && S.prayers[it.id]){ markPrayed(it.id,true); } pm.count++; pm.i++; buzz(); renderPm(); break; }
     case "pm-skip": pm.i++; renderPm(); break;
     case "pm-close": closePm(); break;
+    case "packadd": { const i=+d.i; if(!packFind(i)){ const p=packPrayer(i,Date.now()); S.prayers[p.id]=p; commit(); } toast("Added to your prayers"); renderPray(); break; }
+    case "packone": openPrayNow([packItem(+d.i)]); break;
+    case "packpray": openPrayNow(PACK.map((_,i)=>packItem(i))); break;
     case "libpray": { const x=LIB[+d.i]; openPrayNow([{title:x[0],body:libText(x)+"\n— "+libRef(x),cat:"Scripture"}]); break; }
     case "libadd": { const x=LIB[+d.i], id=uid(); S.prayers[id]={id,title:x[0],body:libText(x)+"\n— "+libRef(x),cat:x[5],created:Date.now(),updated:Date.now(),days:{},count:0,answered:null}; commit(); toast("Added to your prayers"); break; }
     case "praysel": { const {b,c}=S.last, txt=passageText(b,c,sel), lbl=rangeLabel(b,c,sel); clearSel(); prayerEditor(null,{title:lbl,body:txt,cat:"Personal"}); break; }
@@ -1072,6 +1099,7 @@ async function loadBible(){
   loadErr=""; renderAll();
   try{ const r=await fetch("bsb.json"); if(!r.ok) throw new Error(r.status); BIBLE=await r.json(); flat=null; }
   catch(e){ loadErr="Couldn't load the Bible text. Check your connection and try again."; }
+  if(BIBLE){ const n=seedPack(); if(n && S.onboarded) setTimeout(()=>toast(`${n} new prayers added to your list`),600); }
   renderAll(); if(obEl) renderOb();
 }
 applyPrefs();
