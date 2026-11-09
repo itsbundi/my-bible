@@ -226,7 +226,7 @@ textarea.input{height:auto;min-height:130px;padding:14px 16px;font-family:var(--
 .sw[aria-pressed="true"]{border-color:var(--ink)}
 .sw.clr{background:var(--surface);display:grid;place-items:center;color:var(--muted)}
 .sw.clr svg{width:14px;height:14px}
-.fab .acts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.fab .acts{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .act{height:56px;border:0;border-radius:14px;background:var(--surface-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11.5px;font-weight:600}
 .act svg{width:20px;height:20px}
 .act.on{color:var(--accent);background:var(--accent-wash)}
@@ -310,6 +310,67 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px}
 .toast.in{opacity:1;transform:translate(-50%,0)}
 .skel{display:block;height:1em;border-radius:6px;background:rgba(255,255,255,.25);margin:.45em 0}
 .card .skel,.chapter .skel{background:var(--surface-2)}
+/* notes & prayers */
+.titlerow{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.titlerow .btn{flex:none;margin-bottom:4px}
+.seg .cnt{opacity:.55;font-weight:600;margin-left:3px;font-variant-numeric:tabular-nums}
+.seg.s4 button{font-size:12.5px;padding:0 2px}
+.addfab{position:fixed;right:calc(env(safe-area-inset-right,0px) + 18px);bottom:calc(var(--tabbar) + env(safe-area-inset-bottom,0px) + 18px);z-index:22;width:56px;height:56px;border-radius:18px;border:0;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;box-shadow:var(--shadow);transition:transform .12s}
+.addfab:active{transform:scale(.94)}
+.addfab svg{width:26px;height:26px}
+.jn .jtop{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.jn .jtop b{font-family:var(--f-serif);font-size:19px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.jn .jtop span{font-size:12px;color:var(--muted);flex:none}
+.jn .jbody{margin-top:4px;color:var(--muted);font-size:14.5px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-line}
+.refchip{display:inline-flex;align-items:center;gap:6px;margin-top:10px;height:26px;padding:0 10px;border-radius:99px;background:var(--accent-wash);color:var(--accent);font-size:12px;font-weight:700}
+.refchip svg{width:14px;height:14px}
+.edhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.edhead b{font-weight:600;font-size:16px}
+.titlein{width:100%;border:0;background:transparent;font-family:var(--f-serif);font-size:26px;font-weight:500;padding:6px 0;outline:none}
+.titlein::placeholder{color:var(--muted);opacity:.7}
+.bodyin{min-height:200px;margin-top:6px}
+.danger{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.danger p{margin:0 0 10px}
+.btn.warn{color:var(--accent);background:var(--accent-wash)}
+.btn.light{background:#fff;color:#1b1420}
+.praycard{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:20px 18px;border-radius:var(--r);color:#fff;box-shadow:var(--shadow)}
+.praycard .eyebrow{color:rgba(255,255,255,.72)}
+.pc-num{font-family:var(--f-serif);font-size:20px;margin-top:4px}
+.pc-num b{font-size:36px;font-weight:500;font-variant-numeric:tabular-nums}
+.pr{display:flex;align-items:center;gap:6px;background:var(--surface);border-radius:16px;padding:4px 14px 4px 4px;box-shadow:var(--shadow-sm)}
+.pr-main{flex:1;min-width:0;text-align:left;border:0;background:none;padding:12px}
+.pr-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pr-title{display:block;font-family:var(--f-serif);font-size:19px;font-weight:600;margin-top:6px;line-height:1.25}
+.pr-body{color:var(--muted);font-size:14px;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pr-body.ital{font-family:var(--f-serif);font-style:italic;font-size:15.5px;-webkit-line-clamp:3}
+.pr .ck{width:34px;height:34px}
+.cat{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:99px;font-size:11.5px;font-weight:700;background:var(--gold-wash);color:var(--gold)}
+.ansitem{border-left:3px solid var(--gold)}
+.ansbox{margin-top:16px}
+.ansbox.answered{padding:14px;border-radius:14px;background:var(--gold-wash)}
+.ansbox.answered p{font-family:var(--f-serif);font-style:italic;font-size:16px;margin:6px 0 12px}
+.lib h2{margin-top:4px}
+.lib .libtext{font-family:var(--f-serif);font-size:17px;line-height:1.55;margin:8px 0 14px}
+.chipscroll{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:12px calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;padding:0 max(16px,env(safe-area-inset-left,0px)) 2px}
+.chipscroll::-webkit-scrollbar{display:none}
+.chipscroll .chip{flex:none}
+.pm{position:fixed;inset:0;z-index:65;display:flex;flex-direction:column;color:#fff;background-color:#1C1F4A;overflow:auto;
+  padding:calc(env(safe-area-inset-top,0px) + 14px) max(22px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 22px) max(22px,env(safe-area-inset-left,0px));animation:vin .3s ease both}
+.pm .wrap{width:100%;max-width:32rem;flex:1;display:flex;flex-direction:column}
+.pm .pmtop{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pm .ib{color:#fff}
+.pm .ib:active{background:rgba(255,255,255,.12)}
+.pm .dots{display:flex;gap:5px;flex:1}
+.pm .dots i{height:4px;flex:1;border-radius:2px;background:rgba(255,255,255,.2)}
+.pm .dots i.on{background:#fff}
+.pm .dots i.cur{background:rgba(255,255,255,.6)}
+.pm .mid{margin:auto 0;padding:28px 0}
+.pm .count{color:rgba(255,255,255,.65);margin:0 0 10px}
+.pm h2{font-family:var(--f-serif);font-size:clamp(30px,8vw,40px);line-height:1.12;font-weight:500;margin-top:12px}
+.pm p.say{font-family:var(--f-serif);font-size:19px;line-height:1.55;color:rgba(255,255,255,.86);white-space:pre-line;margin:16px 0 0}
+.pm .cat{background:rgba(255,255,255,.16);color:#fff}
+.pm .foot{display:flex;flex-direction:column;gap:8px}
+.pm .skip{background:none;border:0;height:40px;color:rgba(255,255,255,.72);font-weight:600}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -320,7 +381,8 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px}
   <section id="v-today" class="view"></section>
   <section id="v-read" class="view" hidden></section>
   <section id="v-search" class="view" hidden></section>
-  <section id="v-saved" class="view" hidden></section>
+  <section id="v-pray" class="view" hidden></section>
+  <section id="v-notes" class="view" hidden></section>
   <section id="v-me" class="view" hidden></section>
 </main>
 <div class="fab" id="fab" role="toolbar" aria-label="Selected verses"></div>
@@ -352,6 +414,10 @@ const I = {
   flame: ic('<path d="M12 21c-4 0-7-2.7-7-6.6 0-3.2 2.3-5.4 3.8-7 .4 1.9 1.4 3 2.4 3.4C11 7.5 12.4 5 15 3c-.2 3 1.3 4.6 2.6 6.2C18.6 10.5 19 12 19 14.4 19 18.3 16 21 12 21z"/>'),
   download: ic('<path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 20h14"/>'),
   upload: ic('<path d="M12 15V4"/><path d="m7.5 8.5 4.5-4.5 4.5 4.5"/><path d="M5 20h14"/>'),
+  pray: ic('<path d="M12 20.5V11"/><path d="M12 11 9.4 4.7a1.4 1.4 0 0 0-2.6 1.1L8.3 10 5.2 14.4a2 2 0 0 0 .3 2.6L9 20.5"/><path d="m12 11 2.6-6.3a1.4 1.4 0 0 1 2.6 1.1L15.7 10l3.1 4.4a2 2 0 0 1-.3 2.6L15 20.5"/>'),
+  notes: ic('<rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8h6M9 12h6M9 16h3.5"/>'),
+  plus: ic('<path d="M12 5v14M5 12h14"/>',2.2),
+  trash: ic('<path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13"/>'),
   sparkle: ic('<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>'),
 };
 
@@ -381,10 +447,10 @@ const IOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform
 /* ---------- state ---------- */
 const LS_KEY = "mybible.v2", OLD_KEY = "mybible.bsb.v1";
 const blank = () => ({v:2,updated:0,onboarded:false,profile:{name:"",topics:[]},prefs:{size:19,lh:1.65,font:"serif",theme:"system",layout:"lines",rate:1},
-  last:{b:42,c:1},hl:{},bm:{},notes:{},read:{},days:{},plan:null,recent:[],installHidden:false});
+  last:{b:42,c:1},hl:{},bm:{},notes:{},read:{},days:{},plan:null,recent:[],installHidden:false,journal:{},prayers:{}});
 function hydrate(o){ const d=blank(); if(!o||typeof o!=="object") return d;
   return {...d,...o,profile:{...d.profile,...(o.profile||{})},prefs:{...d.prefs,...(o.prefs||{})},last:{...d.last,...(o.last||{})},
-    hl:o.hl||{},bm:o.bm||{},notes:o.notes||{},read:o.read||{},days:o.days||{},recent:Array.isArray(o.recent)?o.recent:[]}; }
+    hl:o.hl||{},bm:o.bm||{},notes:o.notes||{},read:o.read||{},days:o.days||{},recent:Array.isArray(o.recent)?o.recent:[],journal:o.journal||{},prayers:o.prayers||{}}; }
 let S = blank();
 try{ const raw = localStorage.getItem(LS_KEY) || localStorage.getItem(OLD_KEY); if(raw){ S = hydrate(JSON.parse(raw)); if(S.profile.name || S.plan) S.onboarded = true; } }catch(e){}
 function saveLocal(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(S)); }catch(e){} }
@@ -432,6 +498,12 @@ const vtext = (b,c,v) => { try{ return BIBLE[b][1][c-1][v-1]||""; }catch(e){ ret
 const nch = b => BIBLE[b][1].length;
 const nltUrl = (b,c,v) => "https://www.biblegateway.com/passage/?version=NLT&search=" + encodeURIComponent(ref(b,c,v));
 const fmt = t => esc(t).replace(/\bLORD\b/g,'<span class="sc">Lord</span>').replace(/\bGOD\b/g,'<span class="sc">God</span>');
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const fmtDay = s => new Date(s+"T12:00").toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric"});
+function relDate(ts){ const d=new Date(ts), now=new Date(), ds=dstr(d); if(ds===today()) return "Today, "+d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"});
+  const y=new Date(); y.setDate(y.getDate()-1); if(ds===dstr(y)) return "Yesterday";
+  return d.toLocaleDateString(undefined,Object.assign({day:"numeric",month:"short"},d.getFullYear()!==now.getFullYear()?{year:"numeric"}:{})); }
+const emptyState = (icon,title,text,btn) => `<div class="empty"><div class="glyph">${icon}</div><h3>${title}</h3><p>${text}</p>${btn||""}</div>`;
 const buzz = () => { try{ navigator.vibrate && navigator.vibrate(8); }catch(e){} };
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("in"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("in"),1900); }
 function copyText(text){
@@ -467,28 +539,31 @@ function votd(){
 }
 
 /* ---------- routing ---------- */
-const VIEWS=[["today","Today"],["read","Read"],["search","Search"],["saved","Saved"],["me","You"]];
-let view="today";
-function go(v){ if(!VIEWS.some(x=>x[0]===v)) v="today"; const changed=v!==view; view=v;
+const TABS=[["today","Today"],["read","Read"],["pray","Pray"],["notes","Notes"],["me","You"]];
+const VIEWS=[...TABS,["search","Search"]];
+let view="today", prevView="today";
+function go(v){ if(v==="saved") v="notes"; if(!VIEWS.some(x=>x[0]===v)) v="today"; if(v==="search" && view!=="search") prevView=view; const changed=v!==view; view=v;
   VIEWS.forEach(([id])=>{ const el=$("#v-"+id); el.hidden=id!==v; if(id===v && changed){ el.classList.remove("view"); void el.offsetWidth; el.classList.add("view"); } });
   clearSel(); renderTabs(); renderTop(); renderView(v); onScroll(); }
 window.addEventListener("hashchange",()=>{ const h=location.hash.slice(1); if(h && h!==view){ go(h); window.scrollTo(0,0); } });
 function nav(v){ if(location.hash.slice(1)!==v){ try{ location.hash=v; }catch(e){ go(v); } if(location.hash.slice(1)!==v) go(v); } else go(v); }
 
 /* ---------- chrome ---------- */
-function renderTabs(){ $("#tabs").innerHTML=VIEWS.map(([id,l])=>`<button class="tab" data-act="tab" data-v="${id}" ${view===id?'aria-current="page"':''}>${I[id]}<span>${l}</span></button>`).join(""); }
+function renderTabs(){ $("#tabs").innerHTML=TABS.map(([id,l])=>`<button class="tab" data-act="tab" data-v="${id}" ${view===id?'aria-current="page"':''}>${I[id]}<span>${l}</span></button>`).join(""); }
 function renderTop(){
   const el=$("#topInner"); const top=$("#top");
   if(view==="read" && BIBLE){
     const {b,c}=S.last, first=b===0&&c===1, last=b===65&&c===nch(65);
     top.classList.add("reader");
-    el.innerHTML=`<div class="side"><button class="ib" data-act="prev" aria-label="Previous chapter" ${first?"disabled":""}>${I.prev}</button></div>
+    el.innerHTML=`<div class="side"><button class="ib" data-act="tab" data-v="search" aria-label="Search the Bible">${I.search}</button><button class="ib" data-act="prev" aria-label="Previous chapter" ${first?"disabled":""}>${I.prev}</button></div>
       <button class="refpill" data-act="picker" aria-label="Choose book and chapter"><span>${esc(ref(b,c))}</span>${I.down}</button>
       <div class="side r"><button class="ib" data-act="listen" aria-label="Listen to this chapter">${I.listen}</button><button class="ib" data-act="textsheet" aria-label="Reading settings">${I.aa}</button></div>`;
   } else {
     top.classList.remove("reader");
     const t=(VIEWS.find(x=>x[0]===view)||[])[1];
-    el.innerHTML=`<div class="side"></div><div class="ttl">${view==="today"?"My Bible":esc(t)}</div><div class="side r"></div>`;
+    const back=view==="search"?`<button class="ib" data-act="back" aria-label="Back">${I.prev}</button>`:"";
+    const srch=view==="search"?"":`<button class="ib" data-act="tab" data-v="search" aria-label="Search the Bible">${I.search}</button>`;
+    el.innerHTML=`<div class="side">${back}</div><div class="ttl">${view==="today"?"My Bible":esc(t)}</div><div class="side r">${srch}</div>`;
   }
 }
 function onScroll(){
@@ -497,7 +572,7 @@ function onScroll(){
   if(view==="read"){ const h=document.documentElement.scrollHeight-innerHeight; p.style.width=(h>0?Math.min(100,y/h*100):0)+"%"; } else p.style.width="0";
 }
 window.addEventListener("scroll",onScroll,{passive:true});
-function renderView(v){ ({today:renderToday,read:renderRead,search:renderSearch,saved:renderSaved,me:renderMe})[v](); }
+function renderView(v){ ({today:renderToday,read:renderRead,search:renderSearch,pray:renderPray,notes:renderNotes,me:renderMe})[v](); }
 function renderAll(){ renderTabs(); renderTop(); renderView(view); }
 
 /* ---------- Today ---------- */
@@ -538,6 +613,11 @@ function renderToday(){
     <div style="color:${st?"var(--gold)":"var(--line)"}">${I.flame.replace('<svg','<svg width="34" height="34"')}</div></div>
     <div class="week">${days.map((d,i)=>{ const ds=dstr(d), on=!!S.days[ds], isT=ds===today(); return `<div class="day ${on?"on":""} ${isT?"today":""}"><span>${"MTWTFSS"[i]}</span><i>${on?I.check:""}</i></div>`; }).join("")}</div>
     <p class="small muted" style="margin:12px 0 0">${S.days[today()]?"You've read today. Keep it going tomorrow.":"Mark a chapter as read to keep your streak."}</p></article>`;
+  // prayer
+  { const act=Object.values(S.prayers).filter(p=>!p.answered), done=act.filter(prayedToday).length;
+    if(act.length) h+=`<article class="card"><div class="row between" style="flex-wrap:nowrap"><div style="min-width:0"><div class="eyebrow">Prayer</div><h2 style="margin-top:4px">${done===act.length?"You've prayed through your list today":`${act.length-done} ${act.length-done===1?"prayer":"prayers"} to pray today`}</h2></div><div style="color:var(--accent);flex:none">${I.pray.replace('<svg','<svg width="34" height="34"')}</div></div>
+      <div class="row" style="margin-top:14px"><button class="btn sm pri" data-act="praynow">${I.play}Pray now</button><button class="btn sm" data-act="tab" data-v="pray">My prayers</button></div></article>`;
+    else h+=`<article class="card"><div class="eyebrow">Prayer</div><h2 style="margin-top:4px">Keep a prayer list</h2><p class="small muted" style="margin:6px 0 12px">Write down who and what you're praying for, tick them off each day, and remember the answers.</p><button class="btn sm pri" data-act="newprayer">${I.plus}Add a prayer</button></article>`; }
   // continue
   if(BIBLE){ const {b,c}=S.last, tot=nch(b), rd=Array.from({length:tot},(_,i)=>S.read[key(b,i+1)]?1:0).reduce((a,x)=>a+x,0), pct=rd/tot, C=2*Math.PI*23;
     h+=`<button class="card cont" data-act="open" data-b="${b}" data-c="${c}"><div class="ring"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="23" fill="none" stroke="var(--surface-2)" stroke-width="5"/><circle cx="27" cy="27" r="23" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct)}"/></svg><b>${Math.round(pct*100)}%</b></div>
@@ -602,7 +682,7 @@ function renderFab(){
   const anyHl = ks.some(k=>S.hl[k]), allBm = ks.every(k=>S.bm[k]);
   f.innerHTML=`<div class="hd"><b>${esc(rangeLabel(b,c,sel))}</b><button class="ib" data-act="clearsel" aria-label="Clear selection">${I.x}</button></div>
     <div class="sws" role="group" aria-label="Highlight">${HL.map(cn=>`<button class="sw" style="background:var(--hl-${cn})" data-act="hl" data-c="${cn}" aria-pressed="${hlc===cn}" aria-label="Highlight ${cn}"></button>`).join("")}${anyHl?`<button class="sw clr" data-act="hl" data-c="" aria-label="Remove highlight">${I.x}</button>`:""}</div>
-    <div class="acts"><button class="act ${allBm?"on":""}" data-act="bm">${I.saved}${allBm?"Saved":"Bookmark"}</button><button class="act" data-act="opennote" data-v="${Math.min(...sel)}">${I.note}Note</button>
+    <div class="acts"><button class="act ${allBm?"on":""}" data-act="bm">${I.saved}${allBm?"Saved":"Bookmark"}</button><button class="act" data-act="opennote" data-v="${Math.min(...sel)}">${I.note}Note</button><button class="act" data-act="praysel">${I.pray}Pray</button>
     <button class="act" data-act="copysel">${I.copy}Copy</button><button class="act" data-act="sharesel">${I.share}Share</button></div>`;
   f.classList.add("in");
 }
@@ -667,19 +747,111 @@ function runSearch(remember){
     : `<div class="empty"><div class="glyph">${I.search}</div><h3>No verses found</h3><p>Try fewer words, or a different way of saying it.</p></div>`;
 }
 
-/* ---------- Saved ---------- */
-let savedTab="hl";
+/* ---------- Notes ---------- */
+let notesTab="journal";
 const canon=(a,b)=>{ const A=parseKey(a),B=parseKey(b); return A[0]-B[0]||A[1]-B[1]||A[2]-B[2]; };
-function renderSaved(){
-  const el=$("#v-saved"), cnt={hl:Object.keys(S.hl).length,bm:Object.keys(S.bm).length,notes:Object.keys(S.notes).length};
-  let h=`<div class="lt"><h1 class="big">Saved</h1></div><div class="seg" style="margin-top:16px">${[["hl","Highlights"],["bm","Bookmarks"],["notes","Notes"]].map(([id,l])=>`<button data-act="savedtab" data-t="${id}" aria-pressed="${savedTab===id}">${l} ${cnt[id]?`· ${cnt[id]}`:""}</button>`).join("")}</div>`;
-  const st=S[savedTab], keys=Object.keys(st); if(savedTab==="hl") keys.sort(canon); else keys.sort((a,b)=>((st[b].ts||st[b].t||0)-(st[a].ts||st[a].t||0)));
-  if(!BIBLE) h+=`<div class="empty">Loading…</div>`;
-  else if(!keys.length){ const m={hl:[I.sparkle,"No highlights yet","Open the reader, tap a verse, and pick a colour."],bm:[I.saved,"No bookmarks yet","Tap a verse and choose Bookmark to come back to it."],notes:[I.note,"No notes yet","Tap a verse and choose Note to write what it means to you."]}[savedTab];
-    h+=`<div class="empty"><div class="glyph">${m[0]}</div><h3>${m[1]}</h3><p>${m[2]}</p><button class="btn pri" data-act="tab" data-v="read">Open the reader</button></div>`; }
-  else h+=`<div class="results">`+keys.map(k=>{ const [b,c,v]=parseKey(k);
-    return `<button class="res" data-act="open" data-b="${b}" data-c="${c}" data-v="${v}"><div class="r">${savedTab==="hl"?`<span class="dot" style="background:var(--hl-${st[k].c})"></span>`:""}${esc(ref(b,c,v))}</div><div class="x">${fmt(vtext(b,c,v))}</div>${savedTab==="notes"?`<div class="n">${esc(st[k].t)}</div>`:""}</button>`; }).join("")+`</div>`;
+function renderNotes(){
+  const el=$("#v-notes"), cnt={journal:Object.keys(S.journal).length,vnotes:Object.keys(S.notes).length,hl:Object.keys(S.hl).length,bm:Object.keys(S.bm).length};
+  let h=`<div class="lt titlerow"><h1 class="big">Notes</h1><button class="btn sm pri" data-act="newnote">${I.plus}New note</button></div><div class="seg s4" style="margin-top:16px">${[["journal","Journal"],["vnotes","Verses"],["hl","Highlights"],["bm","Bookmarks"]].map(([id,l])=>`<button data-act="notestab" data-t="${id}" aria-pressed="${notesTab===id}">${l}${cnt[id]?`<span class="cnt">${cnt[id]}</span>`:""}</button>`).join("")}</div>`;
+  if(notesTab==="journal"){
+    const list=Object.values(S.journal).sort((a,b)=>b.updated-a.updated);
+    if(!list.length) h+=emptyState(I.notes,"Start your journal","Write down what you're learning, notes from a sermon, or what a passage is saying to you.",`<button class="btn pri" data-act="newnote">${I.plus}New note</button>`);
+    else h+=`<div class="results">`+list.map(n=>{ const t=n.title||n.body.split("\n")[0]; const body=n.title?n.body:n.body.split("\n").slice(1).join("\n");
+      return `<button class="res jn" data-act="editnote" data-id="${n.id}"><div class="jtop"><b>${esc(t||"Untitled")}</b><span>${esc(relDate(n.updated))}</span></div>${body.trim()?`<div class="jbody">${esc(body.trim())}</div>`:""}${n.ref&&BIBLE?`<span class="refchip">${I.read}${esc(ref(n.ref.b,n.ref.c))}</span>`:""}</button>`; }).join("")+`</div>`;
+  } else {
+    const k=notesTab==="vnotes"?"notes":notesTab, st=S[k], keys=Object.keys(st);
+    if(k==="hl") keys.sort(canon); else keys.sort((a,b)=>((st[b].ts||st[b].t||0)-(st[a].ts||st[a].t||0)));
+    if(!BIBLE) h+=`<div class="empty">Loading…</div>`;
+    else if(!keys.length){ const m={notes:[I.note,"No verse notes yet","In the reader, tap a verse and choose Note."],hl:[I.sparkle,"No highlights yet","In the reader, tap a verse and pick a colour."],bm:[I.saved,"No bookmarks yet","Tap a verse and choose Bookmark to come back to it."]}[k];
+      h+=emptyState(m[0],m[1],m[2],`<button class="btn pri" data-act="tab" data-v="read">Open the reader</button>`); }
+    else h+=`<div class="results">`+keys.map(key=>{ const [b,c,v]=parseKey(key);
+      return `<button class="res" data-act="open" data-b="${b}" data-c="${c}" data-v="${v}"><div class="r">${k==="hl"?`<span class="dot" style="background:var(--hl-${st[key].c})"></span>`:""}${esc(ref(b,c,v))}</div><div class="x">${fmt(vtext(b,c,v))}</div>${k==="notes"?`<div class="n">${esc(st[key].t)}</div>`:""}</button>`; }).join("")+`</div>`;
+  }
   el.innerHTML=h;
+}
+let edRef=null;
+function noteEditor(id){
+  const n=id?S.journal[id]:null; edRef=n?n.ref:null;
+  openSheet(`<div class="edhead"><button class="btn sm" data-act="closesheet">Cancel</button><b>${n?"Edit note":"New note"}</b><button class="btn sm pri" data-act="savejournal" data-id="${id||""}">Save</button></div>
+    <input class="titlein" id="jn-title" placeholder="Title" maxlength="120" value="${esc(n?n.title:"")}" aria-label="Title">
+    <textarea class="input bodyin" id="jn-body" placeholder="Start writing…" aria-label="Note">${esc(n?n.body:"")}</textarea>
+    <div class="row" style="margin-top:12px" id="jn-refrow"></div>
+    ${n?`<p class="small muted" style="margin:12px 0 0">Written ${esc(fmtDay(dstr(new Date(n.created))))}</p><div class="danger" id="del-zone">${delBtn("journal",id)}</div>`:""}`,
+    {tall:true,onMount:s=>{ drawRefRow(); if(!n) setTimeout(()=>{ const t=s.querySelector("#jn-title"); if(t) t.focus(); },340); }});
+}
+function drawRefRow(){ const r=sheetEl&&sheetEl.querySelector("#jn-refrow"); if(!r) return;
+  r.innerHTML = edRef&&BIBLE ? `<span class="refchip" style="margin:0">${I.read}${esc(ref(edRef.b,edRef.c))}</span><button class="btn sm" data-act="unlinkref">Remove link</button>`
+    : (BIBLE?`<button class="btn sm" data-act="linkref">${I.read}Link to ${esc(ref(S.last.b,S.last.c))}</button>`:""); }
+const delBtn=(kind,id)=>`<button class="btn sm warn" data-act="askdel" data-kind="${kind}" data-id="${id}">${I.trash}Delete ${kind==="journal"?"note":"prayer"}</button>`;
+
+/* ---------- Prayers ---------- */
+const CATS=["Personal","Family","Friends","Health","Work","Church","World","Thanks"];
+const LIB=[["The Lord's Prayer",39,6,9,13,"Personal"],["The Lord is my shepherd",18,23,1,6,"Personal"],["A blessing over someone",3,6,24,26,"Family"],["Create in me a clean heart",18,51,10,12,"Personal"],["Search me, O God",18,139,23,24,"Personal"],["When you are anxious",49,4,6,7,"Personal"],["For wisdom",58,1,5,5,"Work"],["Trust in the Lord",19,3,5,6,"Personal"],["For strength and love",48,3,16,19,"Family"],["A morning prayer",18,5,3,3,"Personal"],["An evening prayer",18,4,8,8,"Personal"],["Thanksgiving",18,100,1,5,"Thanks"]];
+const libRef=x=>`${bname(x[1])} ${x[2]}:${x[3]}${x[4]>x[3]?"–"+x[4]:""}`;
+const libText=x=>{ const o=[]; for(let v=x[3];v<=x[4];v++) o.push(vtext(x[1],x[2],v)); return o.join(" "); };
+let prayTab="active", prayCat="All", edCat="Personal";
+const prayedToday=p=>!!(p.days&&p.days[today()]);
+function markPrayed(id,on){ const p=S.prayers[id]; if(!p) return; p.days=p.days||{}; const td=today();
+  if(on && !p.days[td]){ p.days[td]=1; p.count=(p.count||0)+1; p.last=td; }
+  else if(!on && p.days[td]){ delete p.days[td]; p.count=Math.max(0,(p.count||1)-1); p.last=Object.keys(p.days).sort().pop()||null; }
+  commit(); }
+const prItem=p=>{ const on=prayedToday(p); return `<div class="pr"><button class="pr-main" data-act="editprayer" data-id="${p.id}"><div class="pr-top"><span class="cat">${esc(p.cat)}</span><span class="small muted">${p.count?`Prayed ${p.count} time${p.count>1?"s":""}`:"New"}</span></div><b class="pr-title">${esc(p.title)}</b>${p.body&&p.body!==p.title?`<div class="pr-body">${esc(p.body)}</div>`:""}</button>
+  <button class="ck ${on?"on":""}" data-act="prayed" data-id="${p.id}" aria-pressed="${on}" aria-label="${on?"Prayed today":"Mark as prayed today"}">${on?I.check:""}</button></div>`; };
+function renderPray(){
+  const el=$("#v-pray"), all=Object.values(S.prayers);
+  const active=all.filter(p=>!p.answered).sort((a,b)=>b.created-a.created), answered=all.filter(p=>p.answered).sort((a,b)=>a.answered.date<b.answered.date?1:-1);
+  const done=active.filter(prayedToday).length;
+  let h=`<div class="lt titlerow"><h1 class="big">Prayers</h1><button class="btn sm pri" data-act="newprayer">${I.plus}New prayer</button></div><div class="stack">`;
+  if(active.length) h+=`<article class="praycard" style="background-image:${STARS},linear-gradient(150deg,#4A2A6E,#1C1F4A)"><div><div class="eyebrow">Today</div><div class="pc-num"><b>${done}</b> of ${active.length} prayed</div></div><button class="btn light" data-act="praynow">${I.play}Pray now</button></article>`;
+  h+=`<div class="seg">${[["active","Praying",active.length],["answered","Answered",answered.length],["library","Scripture",0]].map(([id,l,n])=>`<button data-act="praytab" data-t="${id}" aria-pressed="${prayTab===id}">${l}${n?`<span class="cnt">${n}</span>`:""}</button>`).join("")}</div>`;
+  if(prayTab==="active"){
+    const used=CATS.filter(c=>active.some(p=>p.cat===c)); if(!used.includes(prayCat)) prayCat="All";
+    if(!active.length) h+=emptyState(I.pray,"Start your prayer list","Add the people and things you're praying for. Tick them off each day and keep a record of how God answers.",`<button class="btn pri" data-act="newprayer">${I.plus}Add a prayer</button>`);
+    else { if(used.length>1) h+=`<div class="chipscroll" style="margin-top:0">${["All",...used].map(c=>`<button class="chip" data-act="praycat" data-c="${c}" aria-pressed="${prayCat===c}">${c}</button>`).join("")}</div>`;
+      h+=`<div class="results" style="margin-top:0">`+active.filter(p=>prayCat==="All"||p.cat===prayCat).map(prItem).join("")+`</div>`; }
+  } else if(prayTab==="answered"){
+    if(!answered.length) h+=emptyState(I.sparkle,"No answered prayers yet","When a prayer is answered, open it and tap Mark as answered. It stays here so you can remember.");
+    else h+=`<div class="results" style="margin-top:0">`+answered.map(p=>`<button class="res ansitem" data-act="editprayer" data-id="${p.id}"><div class="pr-top"><span class="cat">${esc(p.cat)}</span><span class="small muted">Answered ${esc(fmtDay(p.answered.date))}</span></div><b class="pr-title">${esc(p.title)}</b>${p.answered.note?`<div class="pr-body ital">${esc(p.answered.note)}</div>`:""}</button>`).join("")+`</div>`;
+  } else {
+    h+= BIBLE ? `<p class="small muted" style="margin:0 2px">Prayers from Scripture to pray as they are, or add to your list.</p><div class="results" style="margin-top:0">`+LIB.map((x,i)=>`<article class="card lib"><div class="eyebrow">${esc(libRef(x))}</div><h2>${esc(x[0])}</h2><p class="libtext">${fmt(libText(x))}</p><div class="row"><button class="btn sm pri" data-act="libpray" data-i="${i}">${I.play}Pray this</button><button class="btn sm" data-act="libadd" data-i="${i}">${I.plus}Add to my prayers</button></div></article>`).join("")+`</div>` : `<div class="empty">Loading…</div>`;
+  }
+  h+=`</div>`;
+  el.innerHTML=h;
+}
+function prayerEditor(id,preset){
+  const p=id?S.prayers[id]:null, v=p||preset||{}, ans=p&&p.answered; edCat=v.cat||"Personal";
+  openSheet(`<div class="edhead"><button class="btn sm" data-act="closesheet">Cancel</button><b>${p?"Prayer":"New prayer"}</b><button class="btn sm pri" data-act="saveprayer" data-id="${id||""}">Save</button></div>
+    <input class="titlein" id="pr-title" placeholder="Who or what are you praying for?" maxlength="120" value="${esc(v.title||"")}" aria-label="Prayer title">
+    <div class="chips" id="pr-cats" style="margin:8px 0 12px" role="group" aria-label="Category">${CATS.map(c=>`<button class="chip" data-act="prcat" data-c="${c}" aria-pressed="${edCat===c}">${c}</button>`).join("")}</div>
+    <textarea class="input bodyin" id="pr-body" placeholder="Write your prayer, or details to remember (optional)" aria-label="Prayer">${esc(v.body||"")}</textarea>
+    ${p?`<p class="small muted" style="margin:10px 0 0">${p.count?`Prayed ${p.count} time${p.count>1?"s":""}${p.last?` · last ${p.last===today()?"today":esc(fmtDay(p.last))}`:""}`:"Not prayed yet"} · added ${esc(fmtDay(dstr(new Date(p.created))))}</p>`:""}
+    ${p&&!ans?`<div class="ansbox"><button class="btn block" data-act="answerform">${I.sparkle}Mark as answered</button><div id="pr-ans" hidden><textarea class="input" id="pr-ansnote" style="min-height:90px;margin-top:10px" placeholder="How was it answered? (optional)" aria-label="How it was answered"></textarea><button class="btn block pri" style="margin-top:10px" data-act="markanswered" data-id="${id}">Save as answered</button></div></div>`:""}
+    ${ans?`<div class="ansbox answered"><div class="eyebrow">Answered ${esc(fmtDay(ans.date))}</div>${ans.note?`<p>${esc(ans.note)}</p>`:"<p></p>"}<button class="btn sm" data-act="unanswer" data-id="${id}">Move back to praying</button></div>`:""}
+    ${p?`<div class="danger" id="del-zone">${delBtn("prayer",id)}</div>`:""}`,
+    {tall:true,onMount:s=>{ if(!p) setTimeout(()=>{ const t=s.querySelector("#pr-title"); if(t) t.focus(); },340); }});
+}
+function readPrayerForm(id){ const title=$("#pr-title").value.trim(), body=$("#pr-body").value.trim(); if(!title&&!body) return null; const old=S.prayers[id]||{};
+  return Object.assign({},old,{id,title:title||body.split("\n")[0].slice(0,80),body,cat:edCat,created:old.created||Date.now(),updated:Date.now(),days:old.days||{},count:old.count||0,answered:old.answered||null}); }
+let pm=null;
+function openPrayNow(items){
+  if(!items.length){ toast("Add a prayer first"); return; } closePm(true);
+  pm={items,i:0,count:0,el:document.createElement("div")}; pm.el.className="pm"; pm.el.setAttribute("role","dialog"); pm.el.setAttribute("aria-label","Pray now");
+  pm.el.style.backgroundImage=STARS+",linear-gradient(165deg,#323C7A 0%,#1C1F4A 52%,#0D0E25 100%)";
+  document.body.appendChild(pm.el); document.body.classList.add("lock"); renderPm();
+}
+function closePm(quiet){ if(!pm) return; pm.el.remove(); pm=null; document.body.classList.remove("lock"); if(!quiet) renderView(view); }
+function renderPm(){
+  const {items,i}=pm, multi=items.length>1; let h;
+  if(i<items.length){ const it=items[i];
+    h=`<div class="pmtop">${multi?`<div class="dots">${items.map((_,k)=>`<i class="${k<i?"on":k===i?"cur":""}"></i>`).join("")}</div>`:"<span></span>"}<button class="ib" data-act="pm-close" aria-label="Close">${I.x}</button></div>
+      <div class="mid">${multi?`<p class="count small">${i+1} of ${items.length}</p>`:""}<span class="cat">${esc(it.cat||"Prayer")}</span><h2>${esc(it.title)}</h2><p class="say">${it.body&&it.body!==it.title?fmt(it.body):"Take a moment to bring this to God."}</p></div>
+      <div class="foot"><button class="btn block light" data-act="pm-amen">Amen</button>${multi?`<button class="skip" data-act="pm-skip">Skip for now</button>`:""}</div>`;
+  } else {
+    h=`<div class="pmtop"><span></span><button class="ib" data-act="pm-close" aria-label="Close">${I.x}</button></div>
+      <div class="mid" style="text-align:center"><h2>Amen.</h2><p class="say">${pm.count>1?`You prayed for ${pm.count} things today.`:"Go in peace."}</p></div>
+      <div class="foot"><button class="btn block light" data-act="pm-close">Done</button></div>`;
+  }
+  pm.el.innerHTML=`<div class="wrap">${h}</div>`; pm.el.scrollTop=0;
 }
 
 /* ---------- You ---------- */
@@ -748,7 +920,7 @@ function closeSheet(instant){
   if(instant){ s.remove(); c.remove(); return; }
   s.classList.remove("in"); c.classList.remove("in"); setTimeout(()=>{ s.remove(); c.remove(); },320);
 }
-document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ if(sheetEl) closeSheet(); else clearSel(); } });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ if(pm) closePm(); else if(sheetEl) closeSheet(); else clearSel(); } });
 function noteSheet(v){
   const {b,c}=S.last, k=key(b,c,v), n=S.notes[k];
   openSheet(`<h3>${esc(ref(b,c,v))}</h3><div class="q">${fmt(vtext(b,c,v))}</div>
@@ -783,7 +955,7 @@ function closeOnboarding(){ if(obEl){ obEl.remove(); obEl=null; document.body.cl
 function renderOb(){
   if(!obEl) return; const dots=`<div class="dots">${[0,1,2].map(i=>`<i class="${i<=obStep?"on":""}"></i>`).join("")}</div>`;
   let h="";
-  if(obStep===0) h=`${dots}<img class="mark" src="icon-192.png" alt=""><h1 style="margin-top:0">A Bible that's <em>yours</em>.</h1><p class="lead">A daily verse chosen for you, a plan to keep you reading, and a place for your highlights and notes.</p>
+  if(obStep===0) h=`${dots}<img class="mark" src="icon-192.png" alt=""><h1 style="margin-top:0">A Bible that's <em>yours</em>.</h1><p class="lead">A daily verse chosen for you, a reading plan, a prayer list, and a place for your notes.</p>
     <label class="eyebrow" for="ob-name">What should we call you?</label><input class="input" id="ob-name" style="margin-top:10px" placeholder="First name" autocomplete="given-name" maxlength="40" value="${esc(S.profile.name)}" enterkeyhint="next">
     <div class="foot"><button class="btn pri block" data-act="ob-next">Continue</button></div>`;
   else if(obStep===1) h=`${dots}<h1>What would you like to grow in${S.profile.name?`, <em>${esc(S.profile.name)}</em>`:""}?</h1><p class="lead">Your verse of the day will come from these. Pick as many as you like.</p>
@@ -847,7 +1019,36 @@ document.addEventListener("click",e=>{
       if(view==="read" && (k==="font"||k==="layout")) renderRead(); break; }
     case "scope": SQ.scope=d.s; renderSearch(); break;
     case "try": $("#q").value=d.q; SQ.q=d.q; runSearch(true); break;
-    case "savedtab": savedTab=d.t; renderSaved(); break;
+    case "notestab": notesTab=d.t; renderNotes(); break;
+    case "back": nav(prevView||"today"); window.scrollTo(0,0); break;
+    case "newnote": noteEditor(); break;
+    case "editnote": noteEditor(d.id); break;
+    case "linkref": edRef={b:S.last.b,c:S.last.c}; drawRefRow(); break;
+    case "unlinkref": edRef=null; drawRefRow(); break;
+    case "savejournal": { const title=$("#jn-title").value.trim(), body=$("#jn-body").value.trim(); if(!title&&!body){ closeSheet(); break; }
+      const id=d.id||uid(), now=Date.now(), old=S.journal[id]; S.journal[id]={id,title,body,ref:edRef,created:old?old.created:now,updated:now};
+      commit(); closeSheet(); if(view!=="notes"){ notesTab="journal"; nav("notes"); } else { notesTab="journal"; renderNotes(); } toast(old?"Note saved":"Note added"); break; }
+    case "askdel": { const z=$("#del-zone"); if(z) z.innerHTML=`<p>Delete this ${d.kind==="journal"?"note":"prayer"}? This can't be undone.</p><div class="row"><button class="btn sm warn" data-act="dodel" data-kind="${d.kind}" data-id="${d.id}">${I.trash}Delete</button><button class="btn sm" data-act="canceldel" data-kind="${d.kind}" data-id="${d.id}">Keep it</button></div>`; break; }
+    case "canceldel": { const z=$("#del-zone"); if(z) z.innerHTML=delBtn(d.kind,d.id); break; }
+    case "dodel": if(d.kind==="journal") delete S.journal[d.id]; else delete S.prayers[d.id]; commit(); closeSheet(); renderView(view); toast(d.kind==="journal"?"Note deleted":"Prayer deleted"); break;
+    case "praytab": prayTab=d.t; renderPray(); break;
+    case "praycat": prayCat=d.c; renderPray(); break;
+    case "newprayer": prayerEditor(); break;
+    case "editprayer": prayerEditor(d.id); break;
+    case "prcat": edCat=d.c; if(sheetEl) sheetEl.querySelectorAll('[data-act="prcat"]').forEach(x=>x.setAttribute("aria-pressed",x.dataset.c===edCat)); break;
+    case "saveprayer": { const id=d.id||uid(), p=readPrayerForm(id); if(!p){ toast("Write what you're praying for first"); break; } S.prayers[id]=p; commit(); closeSheet();
+      if(view!=="pray"){ prayTab="active"; nav("pray"); } else { if(!d.id) prayTab="active"; renderPray(); } toast(d.id?"Prayer saved":"Prayer added"); break; }
+    case "answerform": { const f=$("#pr-ans"); if(f){ f.hidden=false; t.hidden=true; setTimeout(()=>$("#pr-ansnote").focus(),50); } break; }
+    case "markanswered": { const p=readPrayerForm(d.id); if(!p) break; p.answered={date:today(),note:($("#pr-ansnote").value||"").trim()}; S.prayers[d.id]=p; commit(); closeSheet(); renderView(view); toast("Marked as answered"); break; }
+    case "unanswer": { const p=S.prayers[d.id]; if(p){ p.answered=null; p.updated=Date.now(); commit(); } closeSheet(); prayTab="active"; renderView(view); break; }
+    case "prayed": { const on=!prayedToday(S.prayers[d.id]||{}); markPrayed(d.id,on); buzz(); renderView(view); break; }
+    case "praynow": { const act=Object.values(S.prayers).filter(p=>!p.answered).sort((a,b)=>b.created-a.created), todo=act.filter(p=>!prayedToday(p)); openPrayNow((todo.length?todo:act).map(p=>({id:p.id,title:p.title,body:p.body,cat:p.cat}))); break; }
+    case "pm-amen": { const it=pm.items[pm.i]; if(it.id && S.prayers[it.id]){ markPrayed(it.id,true); } pm.count++; pm.i++; buzz(); renderPm(); break; }
+    case "pm-skip": pm.i++; renderPm(); break;
+    case "pm-close": closePm(); break;
+    case "libpray": { const x=LIB[+d.i]; openPrayNow([{title:x[0],body:libText(x)+"\n— "+libRef(x),cat:"Scripture"}]); break; }
+    case "libadd": { const x=LIB[+d.i], id=uid(); S.prayers[id]={id,title:x[0],body:libText(x)+"\n— "+libRef(x),cat:x[5],created:Date.now(),updated:Date.now(),days:{},count:0,answered:null}; commit(); toast("Added to your prayers"); break; }
+    case "praysel": { const {b,c}=S.last, txt=passageText(b,c,sel), lbl=rangeLabel(b,c,sel); clearSel(); prayerEditor(null,{title:lbl,body:txt,cat:"Personal"}); break; }
     case "listen": if(speaking) stopListen(); else startListen(sel.size?Math.min(...sel):1); clearSel(); break;
     case "pauselisten": if(!speaking) break; if(speaking.paused){ speaking.paused=false; speakNext(); } else { speaking.paused=true; speechSynthesis.cancel(); renderPlayer(); } break;
     case "stoplisten": stopListen(); break;
